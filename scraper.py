@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 """
 SBMSA 7u Midget scraper — fetches Skenes, Skubal, Yamamoto schedule pages
-from teamsideline.com and writes standings.json for the dashboard.
+from teamsideline.com and writes standings.json.
 
-Run locally:  python scraper.py
-Runs in CI:   same command, triggered by GitHub Actions
+Usage:
+  python scraper.py            # normal run, writes standings.json
+  python scraper.py --debug    # prints every table found + raw rows, no file write
 """
 
 import json
@@ -15,7 +16,8 @@ from datetime import datetime, timezone
 import requests
 from bs4 import BeautifulSoup
 
-# ── Division config ──────────────────────────────────────────────────────────
+DEBUG = "--debug" in sys.argv
+
 DIVISIONS = {
     "Skenes":   "https://www.teamsideline.com/sites/sbmsa/schedule/676203/7u-Midget-Skenes",
     "Skubal":   "https://www.teamsideline.com/sites/sbmsa/schedule/676201/7u-Midget-Skubal",
@@ -27,295 +29,347 @@ HEADERS = {
         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
         "AppleWebKit/537.36 (KHTML, like Gecko) "
         "Chrome/124.0 Safari/537.36"
-    )
+    ),
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "Accept-Language": "en-US,en;q=0.5",
 }
 
 
-# ── Helpers ──────────────────────────────────────────────────────────────────
-def fetch(url: str) -> BeautifulSoup:
-    resp = requests.get(url, headers=HEADERS, timeout=20)
+def fetch(url):
+    resp = requests.get(url, headers=HEADERS, timeout=30)
     resp.raise_for_status()
     return BeautifulSoup(resp.text, "html.parser")
 
 
-def safe_int(s: str):
-    """Return int or None for empty / non-numeric strings."""
-    s = s.strip()
-    return int(s) if s.lstrip("-").isdigit() else None
+def safe_int(s):
+    s = str(s).strip()
+    return int(s) if re.fullmatch(r"-?\d+", s) else None
 
 
-# ── Standings parser ─────────────────────────────────────────────────────────
-def parse_standings(soup: BeautifulSoup) -> list[dict]:
-    """
-    Teamsideline standings tables look like:
-      <table class="... standings ..."> <tbody> <tr> ...
-    Each row: Rank | Team | W | L | T | PCT | GB | Streak | Coach
-    Column order can vary; we detect by header text.
-    """
+def debug_tables(soup, div_name):
+    tables = soup.find_all("table")
+    print(f"\n{'='*60}")
+    print(f"DEBUG: {div_name} — {len(tables)} table(s) found on page")
+    for i, tbl in enumerate(tables):
+        tid = tbl.get("id", "")
+        tcls = " ".join(tbl.get("class") or [])
+        rows = tbl.find_all("tr")
+        print(f"\n  Table #{i+1}  id='{tid}'  class='{tcls}'  rows={len(rows)}")
+        for j, row in enumerate(rows[:6]):
+            cells = [c.get_text(strip=True) for c in row.find_all(["th","td"])]
+            print(f"    row {j}: {cells}")
+
+
+DATE_RE  = re.compile(r"\b\d{1,2}/\d{1,2}\b|\b(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\w*\s+\d{1,2}\b", re.I)
+TIME_RE  = re.compile(r"\b\d{1,2}:\d{2}\s*(?:AM|PM)\b", re.I)
+SCORE_RE = re.compile(r"^\d{1,2}$")
+
+
+def parse_standings(soup):
     standings = []
 
-    # Find the standings table — teamsideline uses a table with "standings" in
-    # its id or class, or we fall back to the first sizeable table.
     table = None
-    for t in soup.find_all("table"):
-        tid = (t.get("id") or "").lower()
-        tcls = " ".join(t.get("class") or []).lower()
+    for tbl in soup.find_all("table"):
+        tid  = (tbl.get("id") or "").lower()
+        tcls = " ".join(tbl.get("class") or []).lower()
         if "standing" in tid or "standing" in tcls:
-            table = t
+            table = tbl
             break
+
     if table is None:
-        # fallback: biggest table on page
-        tables = soup.find_all("table")
-        if tables:
-            table = max(tables, key=lambda t: len(t.find_all("tr")))
+        for tbl in soup.find_all("table"):
+            hdrs = [th.get_text(strip=True).upper() for th in tbl.find_all("th")]
+            if "W" in hdrs and "L" in hdrs:
+                table = tbl
+                break
 
     if table is None:
         print("  WARNING: no standings table found", file=sys.stderr)
         return standings
 
-    # Read headers to map column indices
-    headers = []
-    header_row = table.find("thead")
-    if header_row:
-        headers = [th.get_text(strip=True).upper() for th in header_row.find_all(["th", "td"])]
-    
-    # Column index map with sensible defaults
-    def col(name, default):
-        try:
-            return headers.index(name)
-        except ValueError:
-            return default
+    header_row = table.find("tr")
+    headers = [c.get_text(strip=True).upper() for c in header_row.find_all(["th","td"])] if header_row else []
 
-    # teamsideline typical order: Team(0) W(1) L(2) T(3) PCT(4) GB(5) Coach varies
+    def colidx(names, default):
+        for name in names:
+            for i, h in enumerate(headers):
+                if name in h:
+                    return i
+        return default
+
     idx = {
-        "team":   col("TEAM", 0),
-        "w":      col("W", 1),
-        "l":      col("L", 2),
-        "t":      col("T", 3),
-        "pct":    col("PCT", 4),
-        "gb":     col("GB", 5),
-        "streak": col("STREAK", 6),
-        "coach":  col("COACH", -1),
+        "team":   colidx(["TEAM","NAME"], 0),
+        "w":      colidx(["W"],    1),
+        "l":      colidx(["L"],    2),
+        "t":      colidx(["T"],    3),
+        "pct":    colidx(["PCT","%"], 4),
+        "gb":     colidx(["GB"],   5),
+        "streak": colidx(["STR"],  6),
+        "coach":  colidx(["COACH","MGR"], -1),
     }
 
-    rows = table.find("tbody")
-    if rows is None:
-        rows = table
-    
     place = 0
-    for tr in rows.find_all("tr"):
-        cells = tr.find_all(["td", "th"])
+    for row in table.find_all("tr"):
+        cells = row.find_all(["td","th"])
         if len(cells) < 4:
             continue
         texts = [c.get_text(strip=True) for c in cells]
-        
-        # Skip header rows that snuck into tbody
-        if texts[0].upper() in ("TEAM", "RANK", "#", ""):
+        if texts[idx["team"]].upper() in ("TEAM","NAME",""):
+            continue
+        if any(int(c.get("colspan",1)) > 3 for c in cells):
             continue
 
         place += 1
 
         def g(key):
             i = idx[key]
-            if i < 0 or i >= len(texts):
-                return ""
-            return texts[i]
+            return texts[i] if 0 <= i < len(texts) else ""
 
-        w = safe_int(g("w")) or 0
-        l = safe_int(g("l")) or 0
-        t = safe_int(g("t")) or 0
+        w  = safe_int(g("w"))  or 0
+        l  = safe_int(g("l"))  or 0
+        t  = safe_int(g("t"))  or 0
         gp = w + l + t
         pct = round(w / gp, 3) if gp > 0 else 0.0
 
         standings.append({
             "place":  place,
             "team":   g("team"),
-            "w":      w,
-            "l":      l,
-            "t":      t,
-            "gp":     gp,
+            "w":      w, "l": l, "t": t, "gp": gp,
             "pct":    f"{pct:.3f}",
             "gb":     g("gb") or "--",
-            "streak": g("streak") or "",
-            "coach":  g("coach") or "",
+            "streak": g("streak"),
+            "coach":  g("coach"),
         })
 
     return standings
 
 
-# ── Schedule / games parser ───────────────────────────────────────────────────
-def parse_games(soup: BeautifulSoup) -> list[dict]:
-    """
-    Teamsideline schedule rows typically look like:
-      Date | Time | Away Team | Away Score | Home Team | Home Score | Location
-    We look for a <table> or <div> grid containing game rows.
-    Scores are empty strings for future games.
-    """
+def parse_games(soup):
     games = []
 
-    # Try schedule table first
-    sched_table = None
-    for t in soup.find_all("table"):
-        tid = (t.get("id") or "").lower()
-        tcls = " ".join(t.get("class") or []).lower()
-        if "schedule" in tid or "schedule" in tcls or "game" in tid or "game" in tcls:
-            sched_table = t
-            break
+    # Find the best schedule table
+    candidates = []
+    for tbl in soup.find_all("table"):
+        tid  = (tbl.get("id") or "").lower()
+        tcls = " ".join(tbl.get("class") or []).lower()
+        rows = tbl.find_all("tr")
+        if len(rows) < 3:
+            continue
+        score = 0
+        if "schedule" in tid or "schedule" in tcls: score += 10
+        if "game" in tid or "game" in tcls:         score += 10
+        sample = " ".join(r.get_text(" ") for r in rows[:10])
+        if DATE_RE.search(sample): score += 5
+        if TIME_RE.search(sample): score += 3
+        if score > 0:
+            candidates.append((score, tbl))
 
-    # If no labeled table, try the second table (first is usually standings)
-    if sched_table is None:
-        tables = soup.find_all("table")
-        if len(tables) >= 2:
-            sched_table = tables[1]
-        elif len(tables) == 1:
-            sched_table = tables[0]
+    if not candidates:
+        for tbl in soup.find_all("table"):
+            if len(tbl.find_all("tr")) >= 5:
+                candidates.append((1, tbl))
 
-    if sched_table is None:
+    if not candidates:
         print("  WARNING: no schedule table found", file=sys.stderr)
         return games
 
-    # Detect column mapping from header
-    headers = []
-    hrow = sched_table.find("thead")
-    if hrow:
-        headers = [th.get_text(strip=True).upper() for th in hrow.find_all(["th", "td"])]
+    candidates.sort(key=lambda x: -x[0])
+    sched_table = candidates[0][1]
 
-    # teamsideline typical schedule columns:
-    # Date | Time | Away | AwayScore | Home | HomeScore | Field/Location
-    def col(name, default):
-        for h in headers:
-            if name in h:
-                return headers.index(h)
+    header_row = sched_table.find("tr")
+    headers = [c.get_text(strip=True).upper() for c in header_row.find_all(["th","td"])] if header_row else []
+
+    if DEBUG:
+        print(f"  [games] headers: {headers}")
+
+    def colidx(names, default):
+        for name in names:
+            for i, h in enumerate(headers):
+                if name in h:
+                    return i
         return default
 
     idx = {
-        "date":       col("DATE", 0),
-        "time":       col("TIME", 1),
-        "away":       col("AWAY", 2),
-        "away_score": col("ASCORE", 3),   # teamsideline uses "AScore" or "Away Score"
-        "home":       col("HOME", 4),
-        "home_score": col("HSCORE", 5),
-        "field":      col("FIELD", 6),
+        "date":       colidx(["DATE","DAY"], 0),
+        "time":       colidx(["TIME"], 1),
+        "away":       colidx(["AWAY","VISITOR","VIS"], 2),
+        "away_score": colidx(["ASCORE","AWAY SCORE","VIS SCORE","VISITOR SCORE","A SCORE"], -1),
+        "home":       colidx(["HOME"], -1),
+        "home_score": colidx(["HSCORE","HOME SCORE","H SCORE"], -1),
+        "field":      colidx(["FIELD","LOCATION","LOC","VENUE","SITE"], -1),
     }
 
-    # Also handle "VISITOR" label instead of "AWAY"
-    if idx["away"] == 2 and "VISITOR" in headers:
-        idx["away"] = headers.index("VISITOR")
+    if DEBUG:
+        print(f"  [games] col map: {idx}")
 
-    tbody = sched_table.find("tbody") or sched_table
-    week = 0
-    last_date = None
+    week_counter = 0
+    last_date_str = None
 
-    for tr in tbody.find_all("tr"):
-        cells = tr.find_all(["td", "th"])
-        if len(cells) < 5:
+    for row in sched_table.find_all("tr"):
+        cells = row.find_all(["td","th"])
+        if len(cells) < 3:
             continue
         texts = [c.get_text(strip=True) for c in cells]
 
-        # Skip header rows
-        if texts[0].upper() in ("DATE", "WEEK", ""):
+        if not any(texts):
+            continue
+        if all(int(c.get("colspan",1)) > 2 for c in cells):
             continue
 
-        def g(key):
-            i = idx[key]
-            if i < 0 or i >= len(texts):
-                return ""
-            return texts[i]
-
-        date_str = g("date")
+        # Find date
+        date_str = ""
+        if 0 <= idx["date"] < len(texts):
+            date_str = texts[idx["date"]].strip()
+        if not DATE_RE.search(date_str):
+            for t in texts:
+                if DATE_RE.search(t):
+                    date_str = t.strip()
+                    break
         if not date_str:
             continue
 
-        # Crude week counter: increment when date changes to a later week
-        if date_str != last_date:
-            # Parse week number from date if possible; otherwise increment
-            last_date = date_str
-            # We'll just increment every ~3 unique dates as a rough heuristic
-            # Real week grouping can be refined based on actual HTML structure
-            week = week  # keep same; increment logic below
+        if date_str != last_date_str:
+            nw = _week_of(date_str)
+            ow = _week_of(last_date_str) if last_date_str else None
+            if nw and ow and nw > ow:
+                week_counter = nw
+            elif week_counter == 0:
+                week_counter = 1
+            last_date_str = date_str
 
-        away_score_raw = g("away_score").strip()
-        home_score_raw = g("home_score").strip()
+        # Find time
+        time_str = ""
+        if 0 <= idx["time"] < len(texts):
+            time_str = texts[idx["time"]].strip()
+        if not TIME_RE.search(time_str):
+            for t in texts:
+                if TIME_RE.search(t):
+                    time_str = t.strip()
+                    break
+
+        # Extract teams and scores
+        away_team  = texts[idx["away"]]       if 0 <= idx["away"]       < len(texts) else ""
+        home_team  = texts[idx["home"]]       if 0 <= idx["home"]       < len(texts) else ""
+        away_score_raw = texts[idx["away_score"]] if 0 <= idx["away_score"] < len(texts) else ""
+        home_score_raw = texts[idx["home_score"]] if 0 <= idx["home_score"] < len(texts) else ""
+
+        # Fallback: infer from content cells if explicit columns missing
+        if not home_team or not away_team:
+            content = []
+            for t in texts:
+                t = t.strip()
+                if not t: continue
+                if t == date_str: continue
+                if t == time_str: continue
+                content.append(t)
+
+            team_cells  = [c for c in content if not SCORE_RE.match(c)]
+            score_cells = [c for c in content if SCORE_RE.match(c)]
+
+            if len(team_cells) >= 2:
+                away_team = team_cells[0]
+                home_team = team_cells[1]
+            if len(score_cells) >= 2:
+                away_score_raw, home_score_raw = score_cells[0], score_cells[1]
+            elif len(score_cells) == 1:
+                m = re.match(r"(\d+)\s*[-–]\s*(\d+)", score_cells[0])
+                if m:
+                    away_score_raw, home_score_raw = m.group(1), m.group(2)
+
+        # Field
+        field = ""
+        if 0 <= idx["field"] < len(texts):
+            field = texts[idx["field"]].strip()
+        if not field:
+            for t in reversed(texts):
+                t = t.strip()
+                if t and not SCORE_RE.match(t) and t not in (away_team, home_team, date_str, time_str):
+                    field = t
+                    break
+
+        if not away_team or not home_team:
+            continue
+
         away_score = safe_int(away_score_raw)
         home_score = safe_int(home_score_raw)
+        if (away_score is None) != (home_score is None):
+            away_score = home_score = None
 
         games.append({
-            "week":       _infer_week(date_str, games),
-            "date":       date_str,
-            "time":       g("time"),
-            "away":       g("away"),
-            "home":       g("home"),
-            "awayScore":  away_score,
-            "homeScore":  home_score,
-            "field":      g("field"),
+            "week": week_counter or 1,
+            "date": date_str, "time": time_str,
+            "away": away_team, "home": home_team,
+            "awayScore": away_score, "homeScore": home_score,
+            "field": field,
         })
 
     return games
 
 
-def _infer_week(date_str: str, existing: list[dict]) -> int:
-    """
-    Assign a week number by grouping dates that are within 7 days of each other.
-    Rough but works for a single-season schedule.
-    """
-    # Parse month/day from strings like "Mon 3/16", "Sat 4/25"
-    match = re.search(r"(\d{1,2})/(\d{1,2})", date_str)
-    if not match:
-        return (existing[-1]["week"] if existing else 1)
-    month, day = int(match.group(1)), int(match.group(2))
-    # Use 2026 season
-    try:
-        d = datetime(2026, month, day)
-    except ValueError:
-        return (existing[-1]["week"] if existing else 1)
-
-    if not existing:
-        return 1
-
-    # Find the earliest game date seen
-    first = _date_of(existing[0]["date"])
-    if first is None:
-        return 1
-
-    delta = (d - first).days
-    return max(1, (delta // 7) + 1)
-
-
-def _date_of(date_str: str):
-    match = re.search(r"(\d{1,2})/(\d{1,2})", date_str)
-    if not match:
+def _week_of(date_str):
+    if not date_str:
+        return None
+    m = re.search(r"(\d{1,2})/(\d{1,2})", date_str)
+    if not m:
         return None
     try:
-        return datetime(2026, int(match.group(1)), int(match.group(2)))
+        d = datetime(2026, int(m.group(1)), int(m.group(2)))
+        return max(1, (d - datetime(2026, 3, 16)).days // 7 + 1)
     except ValueError:
         return None
 
 
-# ── Main ──────────────────────────────────────────────────────────────────────
-def scrape() -> dict:
+def scrape():
     result = {}
     for div_name, url in DIVISIONS.items():
-        print(f"Scraping {div_name}...")
+        print(f"\nScraping {div_name}...")
         try:
             soup = fetch(url)
+            if DEBUG:
+                debug_tables(soup, div_name)
             standings = parse_standings(soup)
-            games = parse_games(soup)
-            print(f"  {len(standings)} teams, {len(games)} games")
+            games     = parse_games(soup)
+            played    = [g for g in games if g["awayScore"] is not None]
+            upcoming  = [g for g in games if g["awayScore"] is None]
+            rf_total  = sum(g["awayScore"] + g["homeScore"] for g in played)
+            print(f"  {len(standings)} teams | {len(played)} played ({rf_total} runs) | {len(upcoming)} upcoming")
+            if DEBUG and played:
+                print("  Sample played games:")
+                for g in played[:4]:
+                    print(f"    {g['date']} | {g['away']} {g['awayScore']} @ {g['home']} {g['homeScore']} | {g['field']}")
             result[div_name] = {"standings": standings, "games": games}
         except Exception as e:
-            print(f"  ERROR scraping {div_name}: {e}", file=sys.stderr)
+            import traceback
+            print(f"  ERROR: {e}", file=sys.stderr)
+            if DEBUG: traceback.print_exc()
             result[div_name] = {"standings": [], "games": [], "error": str(e)}
 
     return {
         "divisions": result,
-        "updated": datetime.now(timezone.utc).isoformat(),
-        "season": "Spring '26",
+        "updated":   datetime.now(timezone.utc).isoformat(),
+        "season":    "Spring '26",
     }
 
 
 if __name__ == "__main__":
     data = scrape()
+
+    if DEBUG:
+        print("\n=== SUMMARY ===")
+        for div, d in data["divisions"].items():
+            played = [g for g in d["games"] if g["awayScore"] is not None]
+            print(f"  {div}: {len(d['standings'])} teams, {len(d['games'])} games, {len(played)} with scores")
+        print("Not writing standings.json in --debug mode.")
+        sys.exit(0)
+
     out = "standings.json"
     with open(out, "w") as f:
         json.dump(data, f, indent=2)
     print(f"\nWrote {out}")
+    for div, d in data["divisions"].items():
+        played = [g for g in d["games"] if g["awayScore"] is not None]
+        if played:
+            rf = sum(g["awayScore"] + g["homeScore"] for g in played)
+            print(f"  {div}: {len(played)} games scored, {rf} total runs")
+        else:
+            print(f"  {div}: WARNING — no scored games found!")
