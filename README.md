@@ -1,6 +1,6 @@
-# 7u Midget Baseball Dashboard
+# 7U SBMSA Baseball Dashboard
 
-Live standings, schedules, and power rankings for SBMSA 7u Midget — Skenes, Skubal, and Yamamoto divisions.
+Live standings, schedules, and power rankings for SBMSA 7U  — Skenes, Skubal, and Yamamoto divisions.
 
 Data is scraped daily from sbmsa.net and committed automatically via GitHub Actions.
 
