@@ -1,0 +1,6 @@
+{
+  "divisions": {},
+  "updated": null,
+  "season": "Spring '26",
+  "_note": "This is a seed file. Run the scraper (python scraper.py) or trigger the GitHub Action to populate real data."
+}
