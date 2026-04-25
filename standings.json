@@ -88,18 +88,6 @@
         },
         {
           "place": 8,
-          "team": "Oakland A's",
-          "w": 3,
-          "l": 3,
-          "t": 1,
-          "gp": 7,
-          "pct": "0.500",
-          "gb": "4",
-          "streak": "Lost 1",
-          "coach": "Dawson"
-        },
-        {
-          "place": 9,
           "team": "Cooperstown Cubs",
           "w": 4,
           "l": 4,
@@ -111,15 +99,27 @@
           "coach": "Lisenby"
         },
         {
+          "place": 9,
+          "team": "Oakland A's",
+          "w": 3,
+          "l": 4,
+          "t": 1,
+          "gp": 8,
+          "pct": "0.438",
+          "gb": "4.5",
+          "streak": "Lost 2",
+          "coach": "Dawson"
+        },
+        {
           "place": 10,
           "team": "Cooperstown Reds",
-          "w": 2,
+          "w": 3,
           "l": 4,
           "t": 0,
-          "gp": 6,
-          "pct": "0.333",
-          "gb": "5",
-          "streak": "Lost 1",
+          "gp": 7,
+          "pct": "0.429",
+          "gb": "4.5",
+          "streak": "Won 1",
           "coach": "Beatty"
         },
         {
@@ -636,8 +636,8 @@
           "time": "7:30 PM",
           "away": "Cooperstown Reds",
           "home": "Oakland A's",
-          "awayScore": null,
-          "homeScore": null,
+          "awayScore": 15,
+          "homeScore": 9,
           "field": "PS Field 3"
         },
         {
@@ -772,6 +772,16 @@
         },
         {
           "week": 7,
+          "date": "Fri 5/1",
+          "time": "7:30 PM",
+          "away": "Kansas City Royals",
+          "home": "LA Dodgers",
+          "awayScore": null,
+          "homeScore": null,
+          "field": "PS Field 2"
+        },
+        {
+          "week": 7,
           "date": "Sat 5/2",
           "time": "10:45 AM",
           "away": "LA Dodgers",
@@ -809,16 +819,6 @@
           "awayScore": null,
           "homeScore": null,
           "field": "PS Field 3"
-        },
-        {
-          "week": 7,
-          "date": "Sat 5/2",
-          "time": "7:30 PM",
-          "away": "Kansas City Royals",
-          "home": "LA Dodgers",
-          "awayScore": null,
-          "homeScore": null,
-          "field": "PS Field 3"
         }
       ]
     },
@@ -851,29 +851,17 @@
         {
           "place": 3,
           "team": "Houston Astros",
-          "w": 5,
+          "w": 6,
           "l": 1,
           "t": 0,
-          "gp": 6,
-          "pct": "0.833",
-          "gb": "1.5",
-          "streak": "Lost 1",
+          "gp": 7,
+          "pct": "0.857",
+          "gb": "1",
+          "streak": "Won 1",
           "coach": "Gentry"
         },
         {
           "place": 4,
-          "team": "Cooperstown Giants",
-          "w": 5,
-          "l": 1,
-          "t": 0,
-          "gp": 6,
-          "pct": "0.833",
-          "gb": "1.5",
-          "streak": "Won 5",
-          "coach": "Dunk"
-        },
-        {
-          "place": 5,
           "team": "City Connect Brewers",
           "w": 6,
           "l": 2,
@@ -883,6 +871,18 @@
           "gb": "1.5",
           "streak": "Won 6",
           "coach": "Kelly"
+        },
+        {
+          "place": 5,
+          "team": "Cooperstown Giants",
+          "w": 5,
+          "l": 2,
+          "t": 0,
+          "gp": 7,
+          "pct": "0.714",
+          "gb": "2",
+          "streak": "Lost 1",
+          "coach": "Dunk"
         },
         {
           "place": 6,
@@ -922,6 +922,18 @@
         },
         {
           "place": 9,
+          "team": "City Connect Padres",
+          "w": 3,
+          "l": 5,
+          "t": 0,
+          "gp": 8,
+          "pct": "0.375",
+          "gb": "4.5",
+          "streak": "Won 2",
+          "coach": "McBeth"
+        },
+        {
+          "place": 10,
           "team": "Cooperstown White Sox",
           "w": 2,
           "l": 5,
@@ -933,31 +945,7 @@
           "coach": "Smith"
         },
         {
-          "place": 10,
-          "team": "City Connect Padres",
-          "w": 2,
-          "l": 5,
-          "t": 0,
-          "gp": 7,
-          "pct": "0.286",
-          "gb": "5",
-          "streak": "Won 1",
-          "coach": "McBeth"
-        },
-        {
           "place": 11,
-          "team": "New York Mets",
-          "w": 1,
-          "l": 7,
-          "t": 0,
-          "gp": 8,
-          "pct": "0.125",
-          "gb": "6.5",
-          "streak": "Lost 2",
-          "coach": "Meacham"
-        },
-        {
-          "place": 12,
           "team": "Atlanta Braves",
           "w": 0,
           "l": 6,
@@ -967,6 +955,18 @@
           "gb": "6.5",
           "streak": "Lost 6",
           "coach": "Bates"
+        },
+        {
+          "place": 12,
+          "team": "New York Mets",
+          "w": 1,
+          "l": 8,
+          "t": 0,
+          "gp": 9,
+          "pct": "0.111",
+          "gb": "7",
+          "streak": "Lost 3",
+          "coach": "Meacham"
         },
         {
           "place": 13,
@@ -1478,8 +1478,8 @@
           "time": "7:30 PM",
           "away": "City Connect Padres",
           "home": "New York Mets",
-          "awayScore": null,
-          "homeScore": null,
+          "awayScore": 13,
+          "homeScore": 3,
           "field": "PS Field 4"
         },
         {
@@ -1498,8 +1498,8 @@
           "time": "7:30 PM",
           "away": "Cooperstown Giants",
           "home": "Houston Astros",
-          "awayScore": null,
-          "homeScore": null,
+          "awayScore": 10,
+          "homeScore": 16,
           "field": "PS Field 4"
         },
         {
@@ -1690,6 +1690,18 @@
         },
         {
           "place": 2,
+          "team": "Space Cowboys",
+          "w": 7,
+          "l": 1,
+          "t": 1,
+          "gp": 9,
+          "pct": "0.833",
+          "gb": ".5",
+          "streak": "Won 4",
+          "coach": "Peter"
+        },
+        {
+          "place": 3,
           "team": "Durham Bulls",
           "w": 6,
           "l": 1,
@@ -1701,7 +1713,7 @@
           "coach": "Woodruff"
         },
         {
-          "place": 3,
+          "place": 4,
           "team": "Chicago Cubs",
           "w": 6,
           "l": 1,
@@ -1711,18 +1723,6 @@
           "gb": "1",
           "streak": "Won 4",
           "coach": "Belcher"
-        },
-        {
-          "place": 4,
-          "team": "Space Cowboys",
-          "w": 6,
-          "l": 1,
-          "t": 1,
-          "gp": 8,
-          "pct": "0.813",
-          "gb": "1",
-          "streak": "Won 3",
-          "coach": "Peter"
         },
         {
           "place": 5,
@@ -1788,12 +1788,12 @@
           "place": 10,
           "team": "San Diego Padres",
           "w": 1,
-          "l": 6,
+          "l": 7,
           "t": 0,
-          "gp": 7,
-          "pct": "0.143",
-          "gb": "6",
-          "streak": "Lost 2",
+          "gp": 8,
+          "pct": "0.125",
+          "gb": "6.5",
+          "streak": "Lost 3",
           "coach": "Pruitt"
         },
         {
@@ -2350,8 +2350,8 @@
           "time": "5:45 PM",
           "away": "San Diego Padres",
           "home": "Space Cowboys",
-          "awayScore": null,
-          "homeScore": null,
+          "awayScore": 10,
+          "homeScore": 17,
           "field": "PS Field 2"
         },
         {
@@ -2507,6 +2507,6 @@
       ]
     }
   },
-  "updated": "2026-04-24T14:58:32.032244+00:00",
+  "updated": "2026-04-25T13:15:38.989496+00:00",
   "season": "Spring '26"
 }
