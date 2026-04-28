@@ -41,26 +41,26 @@
         {
           "place": 4,
           "team": "LA Dodgers",
-          "w": 4,
+          "w": 5,
           "l": 2,
           "t": 1,
-          "gp": 7,
-          "pct": "0.643",
-          "gb": "3",
-          "streak": "Won 1",
+          "gp": 8,
+          "pct": "0.688",
+          "gb": "2.5",
+          "streak": "Won 2",
           "coach": "Dunson"
         },
         {
           "place": 5,
-          "team": "City Connect Angels",
-          "w": 5,
-          "l": 3,
+          "team": "Cooperstown Cubs",
+          "w": 6,
+          "l": 4,
           "t": 0,
-          "gp": 8,
-          "pct": "0.625",
+          "gp": 10,
+          "pct": "0.600",
           "gb": "3",
-          "streak": "Won 3",
-          "coach": "Trevino"
+          "streak": "Won 2",
+          "coach": "Lisenby"
         },
         {
           "place": 6,
@@ -76,15 +76,15 @@
         },
         {
           "place": 7,
-          "team": "Cooperstown Cubs",
+          "team": "City Connect Angels",
           "w": 5,
           "l": 4,
           "t": 0,
           "gp": 9,
           "pct": "0.556",
           "gb": "3.5",
-          "streak": "Won 1",
-          "coach": "Lisenby"
+          "streak": "Lost 1",
+          "coach": "Trevino"
         },
         {
           "place": 8,
@@ -101,13 +101,13 @@
         {
           "place": 9,
           "team": "Cooperstown Reds",
-          "w": 3,
+          "w": 4,
           "l": 4,
           "t": 0,
-          "gp": 7,
-          "pct": "0.429",
-          "gb": "4.5",
-          "streak": "Won 1",
+          "gp": 8,
+          "pct": "0.500",
+          "gb": "4",
+          "streak": "Won 2",
           "coach": "Beatty"
         },
         {
@@ -126,24 +126,24 @@
           "place": 11,
           "team": "Minnesota Twins",
           "w": 1,
-          "l": 6,
+          "l": 7,
           "t": 0,
-          "gp": 7,
-          "pct": "0.143",
-          "gb": "6.5",
-          "streak": "Lost 3",
+          "gp": 8,
+          "pct": "0.125",
+          "gb": "7",
+          "streak": "Lost 4",
           "coach": "Chow"
         },
         {
           "place": 12,
           "team": "Boston Red Sox",
           "w": 0,
-          "l": 7,
+          "l": 8,
           "t": 0,
-          "gp": 7,
+          "gp": 8,
           "pct": "0.000",
-          "gb": "7.5",
-          "streak": "Lost 7",
+          "gb": "8",
+          "streak": "Lost 8",
           "coach": "Bridger"
         },
         {
@@ -696,8 +696,8 @@
           "time": "5:45 PM",
           "away": "Boston Red Sox",
           "home": "LA Dodgers",
-          "awayScore": null,
-          "homeScore": null,
+          "awayScore": 7,
+          "homeScore": 15,
           "field": "PS Field 3"
         },
         {
@@ -706,8 +706,8 @@
           "time": "5:45 PM",
           "away": "Minnesota Twins",
           "home": "Cooperstown Reds",
-          "awayScore": null,
-          "homeScore": null,
+          "awayScore": 7,
+          "homeScore": 14,
           "field": "PS Field 4"
         },
         {
@@ -716,8 +716,8 @@
           "time": "7:30 PM",
           "away": "City Connect Angels",
           "home": "Cooperstown Cubs",
-          "awayScore": null,
-          "homeScore": null,
+          "awayScore": 12,
+          "homeScore": 13,
           "field": "PS Field 3"
         },
         {
@@ -899,13 +899,13 @@
         {
           "place": 7,
           "team": "Cooperstown Cardinals",
-          "w": 4,
+          "w": 5,
           "l": 4,
           "t": 0,
-          "gp": 8,
-          "pct": "0.500",
-          "gb": "3.5",
-          "streak": "Won 1",
+          "gp": 9,
+          "pct": "0.556",
+          "gb": "3",
+          "streak": "Won 2",
           "coach": "Goings"
         },
         {
@@ -972,12 +972,12 @@
           "place": 13,
           "team": "Cincinnati Reds",
           "w": 0,
-          "l": 7,
+          "l": 8,
           "t": 0,
-          "gp": 7,
+          "gp": 8,
           "pct": "0.000",
-          "gb": "7",
-          "streak": "Lost 7",
+          "gb": "7.5",
+          "streak": "Lost 8",
           "coach": "Riley"
         }
       ],
@@ -1488,8 +1488,8 @@
           "time": "7:30 PM",
           "away": "Cooperstown Cardinals",
           "home": "Cincinnati Reds",
-          "awayScore": null,
-          "homeScore": null,
+          "awayScore": 20,
+          "homeScore": 9,
           "field": "PS Field 1"
         },
         {
@@ -1702,6 +1702,18 @@
         },
         {
           "place": 3,
+          "team": "Chicago Cubs",
+          "w": 7,
+          "l": 1,
+          "t": 1,
+          "gp": 9,
+          "pct": "0.833",
+          "gb": "1",
+          "streak": "Won 5",
+          "coach": "Belcher"
+        },
+        {
+          "place": 4,
           "team": "Space Cowboys",
           "w": 7,
           "l": 1,
@@ -1711,18 +1723,6 @@
           "gb": "1",
           "streak": "Tied 1",
           "coach": "Peter"
-        },
-        {
-          "place": 4,
-          "team": "Chicago Cubs",
-          "w": 6,
-          "l": 1,
-          "t": 1,
-          "gp": 8,
-          "pct": "0.813",
-          "gb": "1.5",
-          "streak": "Won 4",
-          "coach": "Belcher"
         },
         {
           "place": 5,
@@ -1764,12 +1764,12 @@
           "place": 8,
           "team": "New York Yaknees",
           "w": 4,
-          "l": 4,
+          "l": 5,
           "t": 0,
-          "gp": 8,
-          "pct": "0.500",
-          "gb": "4",
-          "streak": "Won 2",
+          "gp": 9,
+          "pct": "0.444",
+          "gb": "4.5",
+          "streak": "Lost 1",
           "coach": "O'Connor"
         },
         {
@@ -2400,8 +2400,8 @@
           "time": "5:45 PM",
           "away": "Chicago Cubs",
           "home": "New York Yaknees",
-          "awayScore": null,
-          "homeScore": null,
+          "awayScore": 18,
+          "homeScore": 11,
           "field": "PS Field 2"
         },
         {
@@ -2507,6 +2507,6 @@
       ]
     }
   },
-  "updated": "2026-04-27T14:06:13.608458+00:00",
+  "updated": "2026-04-28T14:24:36.525947+00:00",
   "season": "Spring '26"
 }
