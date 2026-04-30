@@ -28,18 +28,6 @@
         },
         {
           "place": 3,
-          "team": "City Connect Tigers",
-          "w": 6,
-          "l": 2,
-          "t": 0,
-          "gp": 8,
-          "pct": "0.750",
-          "gb": "2",
-          "streak": "Won 6",
-          "coach": "Carey"
-        },
-        {
-          "place": 4,
           "team": "LA Dodgers",
           "w": 5,
           "l": 2,
@@ -49,6 +37,18 @@
           "gb": "2.5",
           "streak": "Won 2",
           "coach": "Dunson"
+        },
+        {
+          "place": 4,
+          "team": "City Connect Tigers",
+          "w": 6,
+          "l": 3,
+          "t": 0,
+          "gp": 9,
+          "pct": "0.667",
+          "gb": "2.5",
+          "streak": "Lost 1",
+          "coach": "Carey"
         },
         {
           "place": 5,
@@ -89,13 +89,13 @@
         {
           "place": 8,
           "team": "Kansas City Royals",
-          "w": 4,
+          "w": 5,
           "l": 4,
           "t": 0,
-          "gp": 8,
-          "pct": "0.500",
-          "gb": "4",
-          "streak": "Lost 2",
+          "gp": 9,
+          "pct": "0.556",
+          "gb": "3.5",
+          "streak": "Won 1",
           "coach": "Clegg"
         },
         {
@@ -113,13 +113,13 @@
         {
           "place": 10,
           "team": "Oakland A's",
-          "w": 3,
+          "w": 4,
           "l": 5,
           "t": 1,
-          "gp": 9,
-          "pct": "0.389",
-          "gb": "5",
-          "streak": "Lost 3",
+          "gp": 10,
+          "pct": "0.450",
+          "gb": "4.5",
+          "streak": "Won 1",
           "coach": "Dawson"
         },
         {
@@ -150,12 +150,12 @@
           "place": 13,
           "team": "Montreal Expos",
           "w": 0,
-          "l": 9,
+          "l": 10,
           "t": 0,
-          "gp": 9,
+          "gp": 10,
           "pct": "0.000",
-          "gb": "8.5",
-          "streak": "Lost 9",
+          "gb": "9",
+          "streak": "Lost 10",
           "coach": "Brown"
         }
       ],
@@ -726,8 +726,8 @@
           "time": "5:45 PM",
           "away": "Kansas City Royals",
           "home": "City Connect Tigers",
-          "awayScore": null,
-          "homeScore": null,
+          "awayScore": 13,
+          "homeScore": 11,
           "field": "PS Field 4"
         },
         {
@@ -736,8 +736,8 @@
           "time": "7:30 PM",
           "away": "Montreal Expos",
           "home": "Oakland A's",
-          "awayScore": null,
-          "homeScore": null,
+          "awayScore": 12,
+          "homeScore": 15,
           "field": "PS Field 3"
         },
         {
@@ -1645,16 +1645,6 @@
         {
           "week": 7,
           "date": "Sat 5/2",
-          "time": "10:45 AM",
-          "away": "Space City",
-          "home": "Milwaukee Brewers",
-          "awayScore": null,
-          "homeScore": null,
-          "field": "PS Field 2"
-        },
-        {
-          "week": 7,
-          "date": "Sat 5/2",
           "time": "12:30 PM",
           "away": "Atlanta Braves",
           "home": "Cincinnati Reds",
@@ -1671,6 +1661,16 @@
           "awayScore": null,
           "homeScore": null,
           "field": "PS Field 4"
+        },
+        {
+          "week": 7,
+          "date": "Sat 5/2",
+          "time": "2:15 PM",
+          "away": "Space City",
+          "home": "Milwaukee Brewers",
+          "awayScore": null,
+          "homeScore": null,
+          "field": "PS Field 4"
         }
       ]
     },
@@ -1679,13 +1679,13 @@
         {
           "place": 1,
           "team": "Cooperstown Phillies",
-          "w": 8,
+          "w": 9,
           "l": 0,
           "t": 0,
-          "gp": 8,
+          "gp": 9,
           "pct": "1.000",
           "gb": "--",
-          "streak": "Won 8",
+          "streak": "Won 9",
           "coach": "Perry"
         },
         {
@@ -1696,7 +1696,7 @@
           "t": 0,
           "gp": 9,
           "pct": "0.889",
-          "gb": ".5",
+          "gb": "1",
           "streak": "Won 3",
           "coach": "Woodruff"
         },
@@ -1708,7 +1708,7 @@
           "t": 1,
           "gp": 9,
           "pct": "0.833",
-          "gb": "1",
+          "gb": "1.5",
           "streak": "Won 5",
           "coach": "Belcher"
         },
@@ -1720,7 +1720,7 @@
           "t": 2,
           "gp": 10,
           "pct": "0.800",
-          "gb": "1",
+          "gb": "1.5",
           "streak": "Tied 1",
           "coach": "Peter"
         },
@@ -1732,7 +1732,7 @@
           "t": 1,
           "gp": 9,
           "pct": "0.722",
-          "gb": "2",
+          "gb": "2.5",
           "streak": "Tied 1",
           "coach": "Knull"
         },
@@ -1740,24 +1740,24 @@
           "place": 6,
           "team": "Arizona Diamondbacks",
           "w": 6,
-          "l": 3,
+          "l": 4,
           "t": 0,
-          "gp": 9,
-          "pct": "0.667",
-          "gb": "2.5",
-          "streak": "Lost 1",
+          "gp": 10,
+          "pct": "0.600",
+          "gb": "3.5",
+          "streak": "Lost 2",
           "coach": "Mendrek-laske"
         },
         {
           "place": 7,
           "team": "Cooperstown A's",
-          "w": 4,
+          "w": 5,
           "l": 4,
           "t": 0,
-          "gp": 8,
-          "pct": "0.500",
+          "gp": 9,
+          "pct": "0.556",
           "gb": "4",
-          "streak": "Won 1",
+          "streak": "Won 2",
           "coach": "Killion"
         },
         {
@@ -1768,7 +1768,7 @@
           "t": 0,
           "gp": 9,
           "pct": "0.444",
-          "gb": "4.5",
+          "gb": "5",
           "streak": "Lost 1",
           "coach": "O'Connor"
         },
@@ -1780,7 +1780,7 @@
           "t": 0,
           "gp": 8,
           "pct": "0.250",
-          "gb": "6",
+          "gb": "6.5",
           "streak": "Lost 4",
           "coach": "Macnamara"
         },
@@ -1792,7 +1792,7 @@
           "t": 0,
           "gp": 9,
           "pct": "0.111",
-          "gb": "7.5",
+          "gb": "8",
           "streak": "Lost 4",
           "coach": "Pruitt"
         },
@@ -1804,33 +1804,33 @@
           "t": 0,
           "gp": 9,
           "pct": "0.111",
-          "gb": "7.5",
+          "gb": "8",
           "streak": "Lost 4",
           "coach": "Ludwig"
         },
         {
           "place": 12,
-          "team": "Detroit Tigers",
-          "w": 0,
-          "l": 7,
-          "t": 0,
-          "gp": 7,
-          "pct": "0.000",
-          "gb": "7.5",
-          "streak": "Lost 7",
-          "coach": "Youngs"
-        },
-        {
-          "place": 13,
           "team": "City Connect Red Sox",
           "w": 0,
           "l": 8,
           "t": 0,
           "gp": 8,
           "pct": "0.000",
-          "gb": "8",
+          "gb": "8.5",
           "streak": "Lost 8",
           "coach": "Rosenbaum"
+        },
+        {
+          "place": 13,
+          "team": "Detroit Tigers",
+          "w": 0,
+          "l": 8,
+          "t": 0,
+          "gp": 8,
+          "pct": "0.000",
+          "gb": "8.5",
+          "streak": "Lost 8",
+          "coach": "Youngs"
         }
       ],
       "games": [
@@ -2420,8 +2420,8 @@
           "time": "5:45 PM",
           "away": "Arizona Diamondbacks",
           "home": "Cooperstown Phillies",
-          "awayScore": null,
-          "homeScore": null,
+          "awayScore": 6,
+          "homeScore": 13,
           "field": "PS Field 2"
         },
         {
@@ -2430,8 +2430,8 @@
           "time": "7:30 PM",
           "away": "Detroit Tigers",
           "home": "Cooperstown A's",
-          "awayScore": null,
-          "homeScore": null,
+          "awayScore": 3,
+          "homeScore": 14,
           "field": "PS Field 2"
         },
         {
@@ -2507,6 +2507,6 @@
       ]
     }
   },
-  "updated": "2026-04-29T14:10:31.462374+00:00",
+  "updated": "2026-04-30T14:08:37.683170+00:00",
   "season": "Spring '26"
 }
