@@ -5,25 +5,25 @@
         {
           "place": 1,
           "team": "Pittsburgh Pirates",
-          "w": 8,
+          "w": 9,
           "l": 0,
           "t": 0,
-          "gp": 8,
+          "gp": 9,
           "pct": "1.000",
           "gb": "--",
-          "streak": "Won 8",
+          "streak": "Won 9",
           "coach": "Anonsen"
         },
         {
           "place": 2,
           "team": "Cooperstown Orioles",
-          "w": 7,
+          "w": 8,
           "l": 1,
           "t": 1,
-          "gp": 9,
-          "pct": "0.833",
+          "gp": 10,
+          "pct": "0.850",
           "gb": "1",
-          "streak": "Won 4",
+          "streak": "Won 5",
           "coach": "Gregerson"
         },
         {
@@ -34,7 +34,7 @@
           "t": 1,
           "gp": 8,
           "pct": "0.688",
-          "gb": "2.5",
+          "gb": "3",
           "streak": "Won 2",
           "coach": "Dunson"
         },
@@ -46,7 +46,7 @@
           "t": 0,
           "gp": 9,
           "pct": "0.667",
-          "gb": "2.5",
+          "gb": "3",
           "streak": "Lost 1",
           "coach": "Carey"
         },
@@ -58,21 +58,21 @@
           "t": 0,
           "gp": 10,
           "pct": "0.600",
-          "gb": "3",
+          "gb": "3.5",
           "streak": "Won 2",
           "coach": "Lisenby"
         },
         {
           "place": 6,
-          "team": "Miami Marlins",
-          "w": 4,
-          "l": 3,
-          "t": 1,
-          "gp": 8,
-          "pct": "0.563",
-          "gb": "3.5",
-          "streak": "Lost 1",
-          "coach": "Frost"
+          "team": "Cooperstown Reds",
+          "w": 5,
+          "l": 4,
+          "t": 0,
+          "gp": 9,
+          "pct": "0.556",
+          "gb": "4",
+          "streak": "Won 3",
+          "coach": "Beatty"
         },
         {
           "place": 7,
@@ -82,7 +82,7 @@
           "t": 0,
           "gp": 9,
           "pct": "0.556",
-          "gb": "3.5",
+          "gb": "4",
           "streak": "Lost 1",
           "coach": "Trevino"
         },
@@ -94,21 +94,21 @@
           "t": 0,
           "gp": 9,
           "pct": "0.556",
-          "gb": "3.5",
+          "gb": "4",
           "streak": "Won 1",
           "coach": "Clegg"
         },
         {
           "place": 9,
-          "team": "Cooperstown Reds",
+          "team": "Miami Marlins",
           "w": 4,
           "l": 4,
-          "t": 0,
-          "gp": 8,
+          "t": 1,
+          "gp": 9,
           "pct": "0.500",
-          "gb": "4",
-          "streak": "Won 2",
-          "coach": "Beatty"
+          "gb": "4.5",
+          "streak": "Lost 2",
+          "coach": "Frost"
         },
         {
           "place": 10,
@@ -118,7 +118,7 @@
           "t": 1,
           "gp": 10,
           "pct": "0.450",
-          "gb": "4.5",
+          "gb": "5",
           "streak": "Won 1",
           "coach": "Dawson"
         },
@@ -126,24 +126,24 @@
           "place": 11,
           "team": "Minnesota Twins",
           "w": 1,
-          "l": 7,
+          "l": 8,
           "t": 0,
-          "gp": 8,
-          "pct": "0.125",
-          "gb": "7",
-          "streak": "Lost 4",
+          "gp": 9,
+          "pct": "0.111",
+          "gb": "8",
+          "streak": "Lost 5",
           "coach": "Chow"
         },
         {
           "place": 12,
           "team": "Boston Red Sox",
           "w": 0,
-          "l": 8,
+          "l": 9,
           "t": 0,
-          "gp": 8,
+          "gp": 9,
           "pct": "0.000",
-          "gb": "8",
-          "streak": "Lost 8",
+          "gb": "9",
+          "streak": "Lost 9",
           "coach": "Bridger"
         },
         {
@@ -154,7 +154,7 @@
           "t": 0,
           "gp": 10,
           "pct": "0.000",
-          "gb": "9",
+          "gb": "9.5",
           "streak": "Lost 10",
           "coach": "Brown"
         }
@@ -746,8 +746,8 @@
           "time": "5:45 PM",
           "away": "Miami Marlins",
           "home": "Cooperstown Reds",
-          "awayScore": null,
-          "homeScore": null,
+          "awayScore": 8,
+          "homeScore": 9,
           "field": "PS Field 1"
         },
         {
@@ -756,8 +756,8 @@
           "time": "7:30 PM",
           "away": "Boston Red Sox",
           "home": "Pittsburgh Pirates",
-          "awayScore": null,
-          "homeScore": null,
+          "awayScore": 3,
+          "homeScore": 12,
           "field": "PS Field 1"
         },
         {
@@ -766,8 +766,8 @@
           "time": "7:30 PM",
           "away": "Minnesota Twins",
           "home": "Cooperstown Orioles",
-          "awayScore": null,
-          "homeScore": null,
+          "awayScore": 3,
+          "homeScore": 11,
           "field": "PS Field 2"
         },
         {
@@ -839,25 +839,25 @@
         {
           "place": 2,
           "team": "Houston Astros",
-          "w": 7,
+          "w": 8,
           "l": 1,
           "t": 0,
-          "gp": 8,
-          "pct": "0.875",
-          "gb": "1",
-          "streak": "Won 2",
+          "gp": 9,
+          "pct": "0.889",
+          "gb": ".5",
+          "streak": "Won 3",
           "coach": "Gentry"
         },
         {
           "place": 3,
           "team": "Milwaukee Brewers",
-          "w": 7,
+          "w": 8,
           "l": 1,
           "t": 0,
-          "gp": 8,
-          "pct": "0.875",
-          "gb": "1",
-          "streak": "Lost 1",
+          "gp": 9,
+          "pct": "0.889",
+          "gb": ".5",
+          "streak": "Won 1",
           "coach": "Staine"
         },
         {
@@ -946,18 +946,6 @@
         },
         {
           "place": 11,
-          "team": "Atlanta Braves",
-          "w": 0,
-          "l": 7,
-          "t": 0,
-          "gp": 7,
-          "pct": "0.000",
-          "gb": "7.5",
-          "streak": "Lost 7",
-          "coach": "Bates"
-        },
-        {
-          "place": 12,
           "team": "New York Mets",
           "w": 1,
           "l": 9,
@@ -969,8 +957,8 @@
           "coach": "Meacham"
         },
         {
-          "place": 13,
-          "team": "Cincinnati Reds",
+          "place": 12,
+          "team": "Atlanta Braves",
           "w": 0,
           "l": 8,
           "t": 0,
@@ -978,6 +966,18 @@
           "pct": "0.000",
           "gb": "8",
           "streak": "Lost 8",
+          "coach": "Bates"
+        },
+        {
+          "place": 13,
+          "team": "Cincinnati Reds",
+          "w": 0,
+          "l": 9,
+          "t": 0,
+          "gp": 9,
+          "pct": "0.000",
+          "gb": "8.5",
+          "streak": "Lost 9",
           "coach": "Riley"
         }
       ],
@@ -1598,8 +1598,8 @@
           "time": "5:45 PM",
           "away": "Cincinnati Reds",
           "home": "Houston Astros",
-          "awayScore": null,
-          "homeScore": null,
+          "awayScore": 0,
+          "homeScore": 6,
           "field": "PS Field 4"
         },
         {
@@ -1608,8 +1608,8 @@
           "time": "7:30 PM",
           "away": "Milwaukee Brewers",
           "home": "Atlanta Braves",
-          "awayScore": null,
-          "homeScore": null,
+          "awayScore": 16,
+          "homeScore": 5,
           "field": "PS Field 4"
         },
         {
@@ -1728,12 +1728,12 @@
           "place": 5,
           "team": "Cooperstown Mariners",
           "w": 6,
-          "l": 2,
+          "l": 3,
           "t": 1,
-          "gp": 9,
-          "pct": "0.722",
-          "gb": "2.5",
-          "streak": "Tied 1",
+          "gp": 10,
+          "pct": "0.650",
+          "gb": "3",
+          "streak": "Lost 1",
           "coach": "Knull"
         },
         {
@@ -1763,25 +1763,25 @@
         {
           "place": 8,
           "team": "New York Yaknees",
-          "w": 4,
+          "w": 5,
           "l": 5,
           "t": 0,
-          "gp": 9,
-          "pct": "0.444",
-          "gb": "5",
-          "streak": "Lost 1",
+          "gp": 10,
+          "pct": "0.500",
+          "gb": "4.5",
+          "streak": "Won 1",
           "coach": "O'Connor"
         },
         {
           "place": 9,
           "team": "Tampa Bay Rays",
-          "w": 2,
+          "w": 3,
           "l": 6,
           "t": 0,
-          "gp": 8,
-          "pct": "0.250",
-          "gb": "6.5",
-          "streak": "Lost 4",
+          "gp": 9,
+          "pct": "0.333",
+          "gb": "6",
+          "streak": "Won 1",
           "coach": "Macnamara"
         },
         {
@@ -1810,18 +1810,6 @@
         },
         {
           "place": 12,
-          "team": "City Connect Red Sox",
-          "w": 0,
-          "l": 8,
-          "t": 0,
-          "gp": 8,
-          "pct": "0.000",
-          "gb": "8.5",
-          "streak": "Lost 8",
-          "coach": "Rosenbaum"
-        },
-        {
-          "place": 13,
           "team": "Detroit Tigers",
           "w": 0,
           "l": 8,
@@ -1831,6 +1819,18 @@
           "gb": "8.5",
           "streak": "Lost 8",
           "coach": "Youngs"
+        },
+        {
+          "place": 13,
+          "team": "City Connect Red Sox",
+          "w": 0,
+          "l": 9,
+          "t": 0,
+          "gp": 9,
+          "pct": "0.000",
+          "gb": "9",
+          "streak": "Lost 9",
+          "coach": "Rosenbaum"
         }
       ],
       "games": [
@@ -2440,8 +2440,8 @@
           "time": "5:45 PM",
           "away": "Tampa Bay Rays",
           "home": "City Connect Red Sox",
-          "awayScore": null,
-          "homeScore": null,
+          "awayScore": 11,
+          "homeScore": 5,
           "field": "PS Field 2"
         },
         {
@@ -2450,8 +2450,8 @@
           "time": "7:30 PM",
           "away": "New York Yaknees",
           "home": "Cooperstown Mariners",
-          "awayScore": null,
-          "homeScore": null,
+          "awayScore": 11,
+          "homeScore": 9,
           "field": "PS Field 3"
         },
         {
@@ -2507,6 +2507,6 @@
       ]
     }
   },
-  "updated": "2026-04-30T14:08:37.683170+00:00",
+  "updated": "2026-05-01T13:37:59.630250+00:00",
   "season": "Spring '26"
 }
