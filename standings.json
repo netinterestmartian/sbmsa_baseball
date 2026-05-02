@@ -772,18 +772,8 @@
         },
         {
           "week": 7,
-          "date": "Fri 5/1",
-          "time": "7:30 PM",
-          "away": "Kansas City Royals",
-          "home": "LA Dodgers",
-          "awayScore": null,
-          "homeScore": null,
-          "field": "PS Field 2"
-        },
-        {
-          "week": 7,
           "date": "Sat 5/2",
-          "time": "9:00 AM",
+          "time": "11:00 AM",
           "away": "City Connect Tigers",
           "home": "City Connect Angels",
           "awayScore": null,
@@ -793,7 +783,7 @@
         {
           "week": 7,
           "date": "Sat 5/2",
-          "time": "10:45 AM",
+          "time": "12:30 PM",
           "away": "LA Dodgers",
           "home": "Miami Marlins",
           "awayScore": null,
@@ -803,7 +793,7 @@
         {
           "week": 7,
           "date": "Sat 5/2",
-          "time": "12:30 PM",
+          "time": "2:00 PM",
           "away": "Cooperstown Reds",
           "home": "Boston Red Sox",
           "awayScore": null,
@@ -813,7 +803,17 @@
         {
           "week": 7,
           "date": "Sat 5/2",
-          "time": "2:15 PM",
+          "time": "3:30 PM",
+          "away": "Kansas City Royals",
+          "home": "LA Dodgers",
+          "awayScore": null,
+          "homeScore": null,
+          "field": "PS Field 2"
+        },
+        {
+          "week": 7,
+          "date": "Sat 5/2",
+          "time": "3:30 PM",
           "away": "Pittsburgh Pirates",
           "home": "Minnesota Twins",
           "awayScore": null,
@@ -1614,18 +1614,8 @@
         },
         {
           "week": 7,
-          "date": "Fri 5/1",
-          "time": "5:45 PM",
-          "away": "Colt 45's",
-          "home": "Atlanta Braves",
-          "awayScore": null,
-          "homeScore": null,
-          "field": "PS Field 1"
-        },
-        {
-          "week": 7,
           "date": "Sat 5/2",
-          "time": "9:00 AM",
+          "time": "11:00 AM",
           "away": "Houston Astros",
           "home": "Cooperstown White Sox",
           "awayScore": null,
@@ -1635,7 +1625,7 @@
         {
           "week": 7,
           "date": "Sat 5/2",
-          "time": "9:00 AM",
+          "time": "11:00 AM",
           "away": "Philladelphia Phillies",
           "home": "Cooperstown Giants",
           "awayScore": null,
@@ -1646,6 +1636,16 @@
           "week": 7,
           "date": "Sat 5/2",
           "time": "12:30 PM",
+          "away": "Colt 45's",
+          "home": "Atlanta Braves",
+          "awayScore": null,
+          "homeScore": null,
+          "field": "PS Field 2"
+        },
+        {
+          "week": 7,
+          "date": "Sat 5/2",
+          "time": "2:00 PM",
           "away": "Atlanta Braves",
           "home": "Cincinnati Reds",
           "awayScore": null,
@@ -1655,7 +1655,7 @@
         {
           "week": 7,
           "date": "Sat 5/2",
-          "time": "12:30 PM",
+          "time": "2:00 PM",
           "away": "Colt 45's",
           "home": "City Connect Brewers",
           "awayScore": null,
@@ -1665,7 +1665,7 @@
         {
           "week": 7,
           "date": "Sat 5/2",
-          "time": "2:15 PM",
+          "time": "3:30 PM",
           "away": "Space City",
           "home": "Milwaukee Brewers",
           "awayScore": null,
@@ -2456,18 +2456,8 @@
         },
         {
           "week": 7,
-          "date": "Fri 5/1",
-          "time": "5:45 PM",
-          "away": "Cooperstown Phillies",
-          "home": "Detroit Tigers",
-          "awayScore": null,
-          "homeScore": null,
-          "field": "PS Field 3"
-        },
-        {
-          "week": 7,
           "date": "Sat 5/2",
-          "time": "9:00 AM",
+          "time": "11:00 AM",
           "away": "Chicago Cubs",
           "home": "Durham Bulls",
           "awayScore": null,
@@ -2477,7 +2467,7 @@
         {
           "week": 7,
           "date": "Sat 5/2",
-          "time": "10:45 AM",
+          "time": "12:30 PM",
           "away": "Texas Rangers",
           "home": "Tampa Bay Rays",
           "awayScore": null,
@@ -2487,7 +2477,7 @@
         {
           "week": 7,
           "date": "Sat 5/2",
-          "time": "10:45 AM",
+          "time": "12:30 PM",
           "away": "City Connect Red Sox",
           "home": "Detroit Tigers",
           "awayScore": null,
@@ -2497,9 +2487,19 @@
         {
           "week": 7,
           "date": "Sat 5/2",
-          "time": "12:30 PM",
+          "time": "2:00 PM",
           "away": "Cooperstown A's",
           "home": "San Diego Padres",
+          "awayScore": null,
+          "homeScore": null,
+          "field": "PS Field 1"
+        },
+        {
+          "week": 7,
+          "date": "Sat 5/2",
+          "time": "3:30 PM",
+          "away": "Cooperstown Phillies",
+          "home": "Detroit Tigers",
           "awayScore": null,
           "homeScore": null,
           "field": "PS Field 1"
@@ -2507,6 +2507,6 @@
       ]
     }
   },
-  "updated": "2026-05-01T13:37:59.630250+00:00",
+  "updated": "2026-05-02T13:22:21.655010+00:00",
   "season": "Spring '26"
 }
