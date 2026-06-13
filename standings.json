@@ -2,17 +2,20 @@
   "divisions": {
     "Skenes": {
       "standings": [],
-      "games": []
+      "games": [],
+      "error": "HTTPSConnectionPool(host='www.teamsideline.com', port=443): Max retries exceeded with url: /sites/sbmsa/schedule/676203/7u-Midget-Skenes (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.teamsideline.com', port=443) at 0x7f3795675790>, 'Connection to www.teamsideline.com timed out. (connect timeout=30)'))"
     },
     "Skubal": {
       "standings": [],
-      "games": []
+      "games": [],
+      "error": "HTTPSConnectionPool(host='www.teamsideline.com', port=443): Max retries exceeded with url: /sites/sbmsa/schedule/676201/7u-Midget-Skubal (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.teamsideline.com', port=443) at 0x7f379512d2e0>, 'Connection to www.teamsideline.com timed out. (connect timeout=30)'))"
     },
     "Yamamoto": {
       "standings": [],
-      "games": []
+      "games": [],
+      "error": "HTTPSConnectionPool(host='www.teamsideline.com', port=443): Max retries exceeded with url: /sites/sbmsa/schedule/676202/7u-Midget-Yamamoto (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.teamsideline.com', port=443) at 0x7f379512d9d0>, 'Connection to www.teamsideline.com timed out. (connect timeout=30)'))"
     }
   },
-  "updated": "2026-06-12T15:25:33.919964+00:00",
+  "updated": "2026-06-13T14:11:06.996000+00:00",
   "season": "Spring '26"
 }
